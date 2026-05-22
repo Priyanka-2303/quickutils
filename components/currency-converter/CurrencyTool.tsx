@@ -279,7 +279,7 @@ export function CurrencyTool() {
                   <p className="text-xs font-medium text-muted-foreground">{code}</p>
                   <p className="mt-0.5 truncate font-semibold tabular-nums">
                     {cur?.symbol} {res.toLocaleString('en-US', {
-                      minimumFractionDigits: 2,
+                      minimumFractionDigits: code === 'JPY' || code === 'KRW' || code === 'IDR' ? 0 : 2,
                       maximumFractionDigits: code === 'JPY' || code === 'KRW' || code === 'IDR' ? 0 : 2,
                     })}
                   </p>
