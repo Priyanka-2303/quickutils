@@ -1,0 +1,5 @@
+# See /robots.ts for the source of truth — this is a static fallback.
+User-agent: *
+Allow: /
+
+Sitemap: https://quickutils.dev/sitemap.xml

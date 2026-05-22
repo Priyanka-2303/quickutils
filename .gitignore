@@ -1,0 +1,25 @@
+# dependencies
+node_modules
+
+# next.js
+.next
+out
+.turbo
+
+# env (commit .env.example only)
+.env
+.env*.local
+
+# build / cache
+*.tsbuildinfo
+.vercel
+.wrangler
+
+# logs
+*.log
+
+# os
+.DS_Store
+
+# local editor / agent config
+.claude

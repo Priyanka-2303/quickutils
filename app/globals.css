@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 20% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 20% 11%;
+
+    --primary: 222 84% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 20% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 222 20% 11%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 222 84% 56%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 24% 7%;
+    --foreground: 210 20% 96%;
+
+    --card: 222 22% 9%;
+    --card-foreground: 210 20% 96%;
+
+    --primary: 217 91% 65%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 220 16% 14%;
+    --secondary-foreground: 210 20% 96%;
+
+    --muted: 220 16% 14%;
+    --muted-foreground: 218 11% 65%;
+
+    --accent: 220 16% 14%;
+    --accent-foreground: 210 20% 96%;
+
+    --destructive: 0 62% 54%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 16% 18%;
+    --input: 220 16% 18%;
+    --ring: 217 91% 65%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(217 91% 75%) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 60% 60% at 50% 0%, black 50%, transparent 100%);
+  }
+}
