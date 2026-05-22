@@ -29,6 +29,9 @@
     --input: 220 13% 91%;
     --ring: 222 84% 56%;
 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 20% 11%;
+
     --radius: 0.75rem;
   }
 
@@ -53,6 +56,9 @@
 
     --destructive: 0 62% 54%;
     --destructive-foreground: 0 0% 98%;
+
+    --popover: 222 22% 11%;
+    --popover-foreground: 210 20% 96%;
 
     --border: 220 16% 18%;
     --input: 220 16% 18%;

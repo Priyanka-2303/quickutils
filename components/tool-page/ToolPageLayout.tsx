@@ -1,6 +1,13 @@
 import type { ReactNode } from 'react';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { breadcrumbSchema, softwareAppSchema } from '@/lib/seo/jsonld';
+import {
+  breadcrumbSchema,
+  softwareAppSchema,
+  webPageSchema,
+  howToSchema,
+  defaultHowToSteps,
+  type HowToStep,
+} from '@/lib/seo/jsonld';
 import { siteConfig } from '@/lib/site-config';
 import type { Tool } from '@/lib/tools-registry';
 import { Hero } from './Hero';
@@ -30,15 +37,15 @@ type ToolPageLayoutProps = {
   contentBlocks?: ContentBlock[];
   faqs?: FAQ[];
   relatedTools: Tool[];
+  /** Custom HowTo steps. Defaults to a 3-step generic guide if omitted. */
+  howToSteps?: HowToStep[];
   /** Set to false to hide the in-page banner ad below the tool. */
   showBannerAd?: boolean;
 };
 
 /**
  * Single layout used by every utility page on the platform.
- * New tools only need to: provide a Tool entry, write content/FAQs, and pass
- * the interactive component as children. Everything else (SEO, ads, related
- * tools, breadcrumbs, schema) is wired automatically.
+ * Auto-emits: SoftwareApplication, BreadcrumbList, WebPage, HowTo JSON-LD.
  */
 export function ToolPageLayout({
   tool,
@@ -47,9 +54,16 @@ export function ToolPageLayout({
   contentBlocks = [],
   faqs = [],
   relatedTools,
+  howToSteps,
   showBannerAd = true,
 }: ToolPageLayoutProps) {
   const url = `${siteConfig.url}/${tool.slug}`;
+  const breadcrumbs = [
+    { name: 'Home', url: siteConfig.url },
+    { name: tool.name, url },
+  ];
+  const steps = howToSteps ?? defaultHowToSteps(tool.name);
+
   return (
     <>
       <JsonLd
@@ -58,11 +72,21 @@ export function ToolPageLayout({
             name: tool.name,
             description: tool.description,
             url,
+            keywords: tool.related,
           }),
-          breadcrumbSchema([
-            { name: 'Home', url: siteConfig.url },
-            { name: tool.name, url },
-          ]),
+          webPageSchema({
+            name: tool.name,
+            description: tool.description,
+            url,
+            breadcrumb: breadcrumbs,
+          }),
+          breadcrumbSchema(breadcrumbs),
+          howToSchema({
+            name: `How to use ${tool.name}`,
+            description: tool.tagline,
+            steps,
+            totalTime: 'PT1M',
+          }),
         ]}
       />
 

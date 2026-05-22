@@ -21,7 +21,7 @@ export function Header() {
   }));
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
           <span className="grid h-7 w-7 place-items-center rounded-md bg-primary text-primary-foreground">
@@ -41,7 +41,7 @@ export function Header() {
             </Button>
             <div
               className={cn(
-                'absolute right-0 top-full z-50 mt-1 w-[640px] rounded-xl border bg-popover p-4 shadow-lg transition-all',
+                'absolute right-0 top-full z-[100] mt-1 w-[640px] rounded-xl border bg-popover p-4 shadow-xl transition-all',
                 toolsOpen
                   ? 'pointer-events-auto translate-y-0 opacity-100'
                   : 'pointer-events-none -translate-y-1 opacity-0',

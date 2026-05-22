@@ -147,6 +147,11 @@ export default function Page() {
           ),
         },
       ]}
+      howToSteps={[
+        { name: 'Paste or upload your JSON', text: 'Paste raw or minified JSON into the editor, or click Upload to open a .json file. Files up to 5 MB are supported.' },
+        { name: 'Click Format or Validate', text: 'Click Format to beautify with syntax highlighting, or Validate to check for errors. The exact line and column of any syntax error is highlighted.' },
+        { name: 'Copy or download the result', text: 'Click Copy to copy the formatted JSON to your clipboard, or Download to save it as a .json file. Your data never leaves your browser.' },
+      ]}
       faqs={faqs}
       relatedTools={related}
     >

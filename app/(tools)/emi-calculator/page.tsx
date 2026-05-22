@@ -5,20 +5,23 @@ import { EMITool } from '@/components/emi-calculator/EMITool';
 import type { FAQ } from '@/lib/seo/jsonld';
 
 export const metadata = buildMetadata({
-  title: 'EMI Calculator — Calculate Loan EMI Online Free',
+  title: 'EMI Calculator — Home, Car & Personal Loan EMI Calculator India',
   description:
-    'Calculate EMI for home loan, car loan, personal loan, and education loan. Full amortization schedule, total interest payable, and year-wise breakdowns. Free, instant, browser-based.',
+    'Free EMI calculator for home loan, car loan, personal loan and education loan. Get monthly EMI, total interest payable and full amortization schedule instantly. No signup required.',
   path: '/emi-calculator',
   keywords: [
     'EMI calculator',
-    'loan EMI calculator',
+    'EMI calculator India',
     'home loan EMI calculator',
     'car loan EMI calculator',
     'personal loan EMI calculator',
-    'EMI calculator India',
-    'loan calculator online',
-    'amortization calculator',
+    'loan EMI calculator online',
+    'loan calculator India',
+    'amortization schedule calculator',
     'monthly installment calculator',
+    'loan interest calculator India',
+    'SBI home loan EMI calculator',
+    'HDFC EMI calculator',
   ],
 });
 
@@ -93,6 +96,11 @@ export default function Page() {
             </ul>
           ),
         },
+      ]}
+      howToSteps={[
+        { name: 'Select your loan type', text: 'Choose from Home Loan, Car Loan, Personal Loan, or Education Loan preset — or enter a custom loan amount using the slider.' },
+        { name: 'Enter loan amount, interest rate and tenure', text: 'Set the principal you want to borrow, the annual interest rate offered by your bank, and your preferred repayment tenure in years.' },
+        { name: 'Read your EMI and view the amortization schedule', text: 'Your monthly EMI, total interest, and total payment appear instantly. Switch to the Schedule tab for a month-by-month breakdown of principal vs interest.' },
       ]}
       faqs={faqs}
       relatedTools={related}

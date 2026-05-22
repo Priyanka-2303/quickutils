@@ -5,19 +5,23 @@ import { CompressTool } from '@/components/compress-image/CompressTool';
 import type { FAQ } from '@/lib/seo/jsonld';
 
 export const metadata = buildMetadata({
-  title: 'Compress Image — Reduce Image File Size Free Online',
+  title: 'Compress Image Online Free — Reduce JPEG, PNG & WebP Size',
   description:
-    'Compress JPEG, PNG, WebP and GIF images in your browser. Adjust quality and maximum dimensions. No uploads — all processing happens locally.',
+    'Compress images online for free — JPEG, PNG, WebP, GIF. Reduce file size by up to 90% without visible quality loss. Runs entirely in your browser, no uploads, no signup.',
   path: '/compress-image',
   keywords: [
-    'compress image',
-    'reduce image size',
-    'image compressor online',
-    'jpeg compressor',
-    'png compressor',
-    'webp compress',
+    'compress image online free',
+    'reduce image size online',
+    'image compressor',
+    'jpeg compressor online',
+    'png compressor online',
+    'webp compressor',
+    'reduce photo size without losing quality',
     'image optimizer free',
-    'reduce photo size',
+    'compress image for web',
+    'reduce image file size',
+    'squoosh alternative',
+    'tinypng alternative free',
   ],
 });
 
@@ -74,6 +78,11 @@ export default function Page() {
             </p>
           ),
         },
+      ]}
+      howToSteps={[
+        { name: 'Drop or select your image', text: 'Drag and drop a JPEG, PNG, WebP, GIF or BMP image onto the upload zone, or click to browse. No size limit is enforced.' },
+        { name: 'Adjust quality and max dimension', text: 'Use the Quality slider (70–85% is usually ideal for photos) and set a Max Dimension to scale down large images from modern cameras.' },
+        { name: 'Download the compressed image', text: 'Click Compress and then Download. The tool shows you exactly how many KB/MB were saved and the percentage reduction.' },
       ]}
       faqs={faqs}
       relatedTools={related}

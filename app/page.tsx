@@ -2,14 +2,31 @@ import Link from 'next/link';
 import { ArrowRight, Lock, Sparkles, Zap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { tools, toolCategories, type ToolCategory } from '@/lib/tools-registry';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { tools, liveTools, toolCategories, type ToolCategory } from '@/lib/tools-registry';
 import { siteConfig } from '@/lib/site-config';
 import { buildMetadata } from '@/lib/seo/metadata';
+import { itemListSchema, websiteSchema, organizationSchema } from '@/lib/seo/jsonld';
 
 export const metadata = buildMetadata({
-  title: `${siteConfig.name} — Free Browser-Based Developer Tools`,
-  description: siteConfig.description,
+  title: 'QuickUtils — Free Online Developer Tools, Calculators & Converters',
+  description:
+    'Free online tools for developers and everyone else. Format JSON, encode Base64, decode JWT, test regex, calculate EMI & GST, compress images, merge PDFs — all free, all in your browser, no signup.',
   path: '/',
+  keywords: [
+    'free online developer tools',
+    'free online tools',
+    'json formatter online free',
+    'base64 encoder online',
+    'gst calculator india',
+    'emi calculator',
+    'compress image online free',
+    'pdf merge online free',
+    'timezone converter',
+    'regex tester online',
+    'jwt decoder',
+    'uuid generator online',
+  ],
 });
 
 export default function HomePage() {
@@ -21,13 +38,28 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd
+        data={[
+          websiteSchema(),
+          organizationSchema(),
+          itemListSchema(
+            liveTools.map((t) => ({
+              name: t.name,
+              url: `${siteConfig.url}/${t.slug}`,
+              description: t.tagline,
+            })),
+          ),
+        ]}
+      />
+
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-b">
         <div className="absolute inset-0 grid-bg opacity-60" aria-hidden />
         <div className="container relative py-16 md:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="default" className="mb-5">
               <Sparkles className="mr-1.5 h-3 w-3" />
-              {tools.length} tools — all free, all browser-based
+              {liveTools.length} tools — all free, all browser-based
             </Badge>
             <h1 className="text-balance text-4xl font-bold tracking-tight md:text-6xl">
               The fastest <span className="gradient-text">developer utilities</span>
@@ -67,6 +99,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Tool grid ────────────────────────────────────────────────── */}
       <section id="tools" className="container py-16">
         <div className="mb-10 text-center">
           <h2 className="text-3xl font-semibold tracking-tight">Every tool, one domain</h2>
@@ -127,6 +160,42 @@ export default function HomePage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── Why QuickUtils ───────────────────────────────────────────── */}
+      <section className="border-t bg-muted/30">
+        <div className="container py-16">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="mb-8 text-center text-2xl font-semibold tracking-tight">
+              Why use QuickUtils?
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-3">
+              {[
+                {
+                  icon: Lock,
+                  title: '100% Private',
+                  body: 'Every tool runs entirely in your browser. Your data — JSON, PDFs, images, salary figures — is never sent to any server.',
+                },
+                {
+                  icon: Zap,
+                  title: 'Instant & Free',
+                  body: 'No account, no paywall, no file size limits. Open a tool, use it, close the tab. That\'s it.',
+                },
+                {
+                  icon: Sparkles,
+                  title: 'One Place for Everything',
+                  body: `${liveTools.length} tools spanning developer utilities, finance calculators, time tools, and image/PDF converters — all on one domain.`,
+                },
+              ].map(({ icon: Icon, title, body }) => (
+                <div key={title} className="rounded-xl border bg-card p-5">
+                  <Icon className="mb-3 h-5 w-5 text-primary" />
+                  <h3 className="mb-1.5 font-semibold">{title}</h3>
+                  <p className="text-sm text-muted-foreground">{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>
