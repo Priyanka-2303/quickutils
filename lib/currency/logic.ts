@@ -81,17 +81,14 @@ export function formatAmount(amount: number, code: CurrencyCode): string {
   }
 }
 
-const FRANKFURTER = 'https://api.frankfurter.app';
-
 /**
  * Fetch all rates for a given base currency.
+ * Calls the local /api/rates proxy (server-side) to avoid CORS issues.
  * Returns null on network/API failure.
  */
 export async function fetchRates(base: CurrencyCode): Promise<RatesResponse | null> {
   try {
-    const res = await fetch(`${FRANKFURTER}/latest?from=${base}`, {
-      next: { revalidate: 3600 }, // cache 1 hour in Next.js fetch
-    });
+    const res = await fetch(`/api/rates?base=${base}`);
     if (!res.ok) return null;
     return res.json() as Promise<RatesResponse>;
   } catch {
