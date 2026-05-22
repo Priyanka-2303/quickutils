@@ -7,6 +7,7 @@ const HIGH_PRIORITY = new Set([
   'json-formatter', 'base64-encoder', 'compress-image',
   'image-to-pdf', 'pdf-merge', 'emi-calculator',
   'gst-calculator', 'salary-calculator', 'pdf-to-image',
+  'currency-converter',
 ]);
 
 export default function sitemap(): MetadataRoute.Sitemap {

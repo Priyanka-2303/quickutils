@@ -13,9 +13,9 @@ export function organizationSchema() {
     url: siteConfig.url,
     logo: {
       '@type': 'ImageObject',
-      url: `${siteConfig.url}/logo.png`,
-      width: 512,
-      height: 512,
+      url: `${siteConfig.url}/apple-icon`,
+      width: 180,
+      height: 180,
     },
     sameAs: [],
   };

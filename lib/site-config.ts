@@ -4,7 +4,6 @@ export const siteConfig = {
   description:
     'Free online developer tools, calculators and converters — all running in your browser. Format JSON, encode Base64, decode JWT, test regex, calculate GST, EMI, salary, compress images, merge PDFs and more. No signup, no data uploads.',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://quickutils.dev',
-  ogImage: '/og-default.png',
   author: 'QuickUtils',
   twitterHandle: '@quickutils',
   keywords: [

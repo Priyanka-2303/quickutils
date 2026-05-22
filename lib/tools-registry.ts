@@ -30,6 +30,7 @@ import {
   Percent,
   FileOutput,
   FilePlus2,
+  BadgeDollarSign,
 } from 'lucide-react';
 
 export type ToolCategory = 'developer' | 'image' | 'pdf' | 'finance' | 'time';
@@ -217,7 +218,19 @@ export const tools: Tool[] = [
     category: 'finance',
     icon: Calculator,
     status: 'live',
-    related: ['salary-calculator', 'gst-calculator'],
+    related: ['salary-calculator', 'gst-calculator', 'currency-converter'],
+  },
+  {
+    slug: 'currency-converter',
+    name: 'Currency Converter',
+    shortName: 'Currency',
+    description:
+      'Convert between 32 currencies with live ECB exchange rates. USD to INR, EUR to GBP, AED to INR and more. Multi-currency board shows 12 currencies at once.',
+    tagline: 'Live exchange rates — 32 currencies.',
+    category: 'finance',
+    icon: BadgeDollarSign,
+    status: 'live',
+    related: ['emi-calculator', 'gst-calculator', 'salary-calculator'],
   },
   {
     slug: 'timezone-converter',
