@@ -1,8 +1,13 @@
 import { buildMetadata } from '@/lib/seo/metadata';
 import { getRelatedTools, getTool } from '@/lib/tools-registry';
 import { ToolPageLayout } from '@/components/tool-page/ToolPageLayout';
-import { CurrencyTool } from '@/components/currency-converter/CurrencyTool';
+import dynamic from 'next/dynamic';
 import type { FAQ } from '@/lib/seo/jsonld';
+
+const CurrencyTool = dynamic(
+  () => import('@/components/currency-converter/CurrencyTool').then((m) => m.CurrencyTool),
+  { ssr: false },
+);
 
 export const metadata = buildMetadata({
   title: 'Currency Converter — Live Exchange Rates Online Free',

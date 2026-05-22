@@ -217,7 +217,7 @@ export function CurrencyTool() {
                 </p>
                 <AnimatePresence mode="wait">
                   <motion.p
-                    key={result.result}
+                    key={`${result.result}-${to}`}
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
