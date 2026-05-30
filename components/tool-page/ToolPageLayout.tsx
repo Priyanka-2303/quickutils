@@ -16,6 +16,7 @@ import { FaqSection } from './FaqSection';
 import { ContentSection } from './ContentSection';
 import { BannerAd } from '@/components/ads/BannerAd';
 import { MobileStickyAd } from '@/components/ads/MobileStickyAd';
+import { SidebarAd } from '@/components/ads/SidebarAd';
 import type { FAQ } from '@/lib/seo/jsonld';
 
 type ContentBlock = {
@@ -93,13 +94,27 @@ export function ToolPageLayout({
 
       <Hero tool={tool} {...hero} />
 
-      <section className="container py-8">{children}</section>
+      {/* Tool + optional desktop sidebar */}
+      <div className="container py-8">
+        <div className="flex gap-8">
+          <div className="min-w-0 flex-1">
+            {children}
 
-      {showBannerAd && (
-        <div className="container my-6">
-          <BannerAd slot="9962612933" />
+            {showBannerAd && (
+              <div className="mt-8">
+                <BannerAd slot="9962612933" />
+              </div>
+            )}
+          </div>
+
+          {/* Sidebar — desktop only */}
+          <aside className="hidden w-[300px] shrink-0 xl:block">
+            <div className="sticky top-24">
+              <SidebarAd slot="8379432906" />
+            </div>
+          </aside>
         </div>
-      )}
+      </div>
 
       {contentBlocks.map((block) => (
         <ContentSection key={block.title} title={block.title} description={block.description}>
@@ -108,6 +123,11 @@ export function ToolPageLayout({
       ))}
 
       {faqs.length > 0 && <FaqSection faqs={faqs} />}
+
+      {/* Ad between FAQ and Related Tools */}
+      <div className="container my-4">
+        <BannerAd slot="4518714568" />
+      </div>
 
       <RelatedTools tools={relatedTools} />
       <MobileStickyAd slot="5039634918" />
