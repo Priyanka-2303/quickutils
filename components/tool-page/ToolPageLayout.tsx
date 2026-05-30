@@ -15,6 +15,7 @@ import { RelatedTools } from './RelatedTools';
 import { FaqSection } from './FaqSection';
 import { ContentSection } from './ContentSection';
 import { BannerAd } from '@/components/ads/BannerAd';
+import { MobileStickyAd } from '@/components/ads/MobileStickyAd';
 import type { FAQ } from '@/lib/seo/jsonld';
 
 type ContentBlock = {
@@ -96,7 +97,7 @@ export function ToolPageLayout({
 
       {showBannerAd && (
         <div className="container my-6">
-          <BannerAd />
+          <BannerAd slot="9962612933" />
         </div>
       )}
 
@@ -109,6 +110,7 @@ export function ToolPageLayout({
       {faqs.length > 0 && <FaqSection faqs={faqs} />}
 
       <RelatedTools tools={relatedTools} />
+      <MobileStickyAd slot="5039634918" />
     </>
   );
 }
