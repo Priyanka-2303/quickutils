@@ -87,9 +87,9 @@ export function AdSlot({
 
       <ins
         ref={insRef}
-        className="adsbygoogle block"
+        className="adsbygoogle"
         style={{
-          display: 'block',
+          display: adLoaded ? 'block' : 'none',
           minHeight: adLoaded ? reservedHeight : 0,
           overflow: 'hidden',
         }}
